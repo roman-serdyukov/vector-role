@@ -1,0 +1,13 @@
+[sources.my_log]
+type = "file"
+ignore_older_secs = 600
+include = [ "/var/log/**/*.log" ]
+read_from = "beginning"
+
+[sinks.for_clickhouse]
+type = "clickhouse"
+inputs = [ "my_log" ]
+database = "logdata"
+endpoint = "http://localhost:8123"
+table = "logtable"
+compression = "gzip"
