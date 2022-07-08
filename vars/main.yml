@@ -1,11 +1,2 @@
 ---
 # vars file for vector-role
-clickhouse_packages:
-  - clickhouse-client
-  - clickhouse-server
-  - clickhouse-common-static
-
-clickhouse_install:
-  - clickhouse-common-static
-  - clickhouse-client
-  - clickhouse-server
