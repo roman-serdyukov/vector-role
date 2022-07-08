@@ -5,27 +5,27 @@
     url: https://packages.timber.io/vector/{{ vector_version }}/vector_{{ vector_version }}-1_amd64.deb
     dest: "./vector_{{ vector_version }}-1_amd64.deb"
     mode: '0755'
-    when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian"
 
 - name: Install Vector on Debian OS
   become: true
   ansible.builtin.apt:
     deb: /home/{{ ansible_user }}/vector_{{ vector_version }}-1_amd64.deb
-    when: ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian"
 
 - name: Get Vector distrib on RedHat OS
   ansible.builtin.get_url:
     url: https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm
     dest: "./vector_{{ vector_version }}-1.x86_64.rpm"
     mode: '0755'
-    when: ansible_os_family != "Debian"
+  when: ansible_os_family != "Debian"
 
 - name: Install Vector on RedHat OS
   become: true
   ansible.builtin.yum:
     name:
     - vector_{{ vector_version }}-1.x86_64.rpm
-    when: ansible_os_family != "Debian"
+  when: ansible_os_family != "Debian"
 
 - name: Vector config
   ansible.builtin.template:
